@@ -13,13 +13,17 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(151, 151, 255);
+  /* background: url('../img/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; */
+  background: rgb(117, 117, 117);
 }
 
 #weather-infos{
   width: 300px;
   padding: 1em;
   border-radius: 20px;
+  /* backdrop-filter: blur(10px); */
   background: white;
   display: flex;
   flex-direction: column;
@@ -68,5 +72,5 @@ body{
   font-weight: bold;
 }
 #weather-footer span{
-  font-weight: 300;
+  font-weight: 500;
 }
