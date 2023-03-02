@@ -1,4 +1,5 @@
 const btnGetPos = document.getElementById("getLocation");
+const btnGetSearch = document.getElementById("getSearch");
 
 const divInfo = document.getElementById("weather-infos");
 const cardHeader = document.getElementById("weather-header");
@@ -8,7 +9,10 @@ const cardFooter = document.getElementById("weather-footer");
 const skyState = document.getElementById("sky-state");
 const tempState = document.getElementById("temp-state");
 const city = document.getElementById("city");
-const card = document.getElementById("card");
+const btnMore = document.querySelector("#more");
+btnMore.style['opacity'] = "0";
+const btnLess = document.querySelector("#less");
+const card = document.getElementById('card');
 const cardFront = document.querySelector(".card-front");
 const cardBack = document.querySelector(".card-back");
 const longitude = document.getElementById('longitude');
@@ -18,12 +22,14 @@ const tempMax = document.getElementById('temp-max');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 const wind = document.getElementById('wind');
-
+let cityInput = '';
 const apiKey = "af9b9ec2b1d5fa676df0970fc7aaeb20";
 let urlDefault =
 	"https://api.openweathermap.org/data/2.5/weather?lat=48.8450165&lon=2.3995822&units=metric&appid=af9b9ec2b1d5fa676df0970fc7aaeb20";
 let lat;
 let lon;
+
+console.log(btnMore)
 
 // ? API Geolocation -> Récupération de la géolocalisation
 function getLocation() {
@@ -37,8 +43,14 @@ function getLocation() {
 const successCallback = (position) => {
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
-	urlAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=fr&units=metric&appid=af9b9ec2b1d5fa676df0970fc7aaeb20`;
-	callApi(urlAPI);
+
+	if (cityInput == ""){
+		urlAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=fr&units=metric&appid=af9b9ec2b1d5fa676df0970fc7aaeb20`;
+		callApi(urlAPI);
+	} else {
+		urlAPI = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&lang=fr&units=metric&appid=af9b9ec2b1d5fa676df0970fc7aaeb20`;
+		callApi(urlAPI);
+	}
 };
 
 const errorCallback = (error) => {
@@ -55,41 +67,38 @@ function callApi(urlAPI) {
 			console.log(data.weather[0].id);
 			let weatherId = data.weather[0].id;
 			// ? weatherBody -> WeatherIco
-			switch (weatherId) {
-				case 200:
-					weatherIco.src = "assets/img/light.png";
-					break;
-				case 300:
-					weatherIco.src = "assets/img/rain+light.png";
-					break;
-				case 500:
-					weatherIco.src = "assets/img/rain.png";
-					break;
-				case 600:
-					weatherIco.src = "assets/img/snow.png";
-					break;
-				case 700:
-					weatherIco.src = "assets/img/cloudy.png";
-					break;
-				case 800:
-					weatherIco.src = "assets/img/sunny.png";
-					break;
-				case 801:
-					weatherIco.src = "assets/img/clouds.png";
-					break;
+			if(200 > weatherId > 299){
+				weatherIco.src = "assets/img/light.png";
+			}else if(300 > weatherId > 499){
+				weatherIco.src = "assets/img/rain+light.png";
+			}else if(500 > weatherId > 599){
+				weatherIco.src = "assets/img/rain.png";
+			}else if(600 > weatherId > 699){
+				weatherIco.src = "assets/img/snow.png";
+			}else if(700 > weatherId > 799){
+				weatherIco.src = "assets/img/cloudy.png";
+			}else if(weatherId == 800){
+				weatherIco.src = "assets/img/sunny.png";
+			}else{
+				weatherIco.src = "assets/img/clouds.png";
 			}
+
 			// ? weatherFooter -> AllStates
 			skyState.textContent = `${data.weather[0].description}`;
 			tempState.textContent = `${Math.floor(data.main.temp)} °C (${Math.floor(data.main.feels_like)} ressenti)`;
 			city.textContent = `${data.name} - ${data.sys.country}`;
-			card.addEventListener("touchmove", () => {
+
+			btnMore.style['opacity'] = "1";
+
+			btnMore.addEventListener("click", () => {
 				cardFront.classList.toggle("active");
 				cardBack.classList.toggle("active");
 			});
-			card.addEventListener("click", () => {
+			btnLess.addEventListener("click", () => {
 				cardFront.classList.toggle("active");
 				cardBack.classList.toggle("active");
 			});
+
 			let unix_timestamp_sunset = data.sys.sunrise;
 			let unix_timestamp_sunrise = data.sys.sunset;
 			let sunsetConv = convertUNIXTimestamp(unix_timestamp_sunset);
@@ -125,5 +134,14 @@ function convertUNIXTimestamp(time){
 }
 
 btnGetPos.addEventListener("click", () => {
+	if(!(cityInput) == ''){
+		cityInput = '';
+	}
+	getLocation();
+});
+
+btnGetSearch.addEventListener("click", () => {
+	cityInput = (window.prompt("sometext",""));
+	console.log("city : " + city);
 	getLocation();
 });

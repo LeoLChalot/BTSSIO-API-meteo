@@ -92,6 +92,9 @@ main{
   justify-content: center;
   align-items: center;
 }
+#weather-body img{
+  width: 80%
+}
 
 #weather-footer{
   display: flex;
@@ -126,4 +129,14 @@ button{
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+}
+
+#more,
+#less{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: .5s all;
 }
