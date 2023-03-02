@@ -28,7 +28,11 @@ main{
   width: 300px;
   height: 445px;
   position: relative;
-  transition: .5s all;
+
+}
+
+#card:hover{
+  box-shadow: none;
 }
 
 .card-front,
@@ -40,25 +44,19 @@ main{
 }
 
 .card-back{
-  transform: rotateY(90deg);
+  transform: rotateY(-180deg);
   backface-visibility: hidden;
-  display: none;
+}
+.card-front.active{
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 
 .card-front{
   transform: rotateY(0deg);
-  backface-visibility: visible;
 }
-
-.card-front.active{
-  transform: rotateY(90deg);
-  backface-visibility: hidden;
-  display: none;
-}
-
 .card-back.active{
   transform: rotateY(0deg);
-  backface-visibility: visible;
 }
 
 #weather-infos{
@@ -71,11 +69,8 @@ main{
   align-items: center;
   gap: 1em;
   box-shadow: 4px 5px 6px 0px rgb(0, 0, 0);
-  transition: .5s all;
 }
-#weather-infos:hover{
-  box-shadow: none;
-}
+
 #weather-infos h1{
   font-size: 23px;
 }
