@@ -140,3 +140,16 @@ button{
   font-size: 1em;
   transition: .5s all;
 }
+
+table{
+  width: 100%;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  padding: .6em;
+}
+
+.tdName{
+  font-weight: bold;
+}

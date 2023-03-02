@@ -107,12 +107,18 @@ function callApi(urlAPI) {
 
 			longitude.textContent = `${data.coord.lon}`;
 			latitude.textContent = `${data.coord.lat}`;
+			longitude.style['color'] = "green";
+			latitude.style['color'] = "green";
 			tempMin.textContent = `${Math.floor(data.main.temp_min)} °C`;
+			tempMin.style['color'] = "blue";
 			tempMax.textContent = `${Math.floor(data.main.temp_max)} °C`;
+			tempMax.style['color'] = "red";
 			sunrise.textContent = `${sunsetConv}`;
 			sunset.textContent = `${sunriseConv}`;
+			sunrise.style['color'] = "orange";
+			sunset.style['color'] = "orange";
 			wind.textContent = `${data.wind.speed} m/s`;
-
+			wind.style['color'] = "deepskyblue";
 
 		})
 		.catch((error) => console.log(error));
