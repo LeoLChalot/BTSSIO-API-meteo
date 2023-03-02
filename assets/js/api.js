@@ -90,14 +90,7 @@ function callApi(urlAPI) {
 
 			btnMore.style['opacity'] = "1";
 
-			btnMore.addEventListener("click", () => {
-				cardFront.classList.toggle("active");
-				cardBack.classList.toggle("active");
-			});
-			btnLess.addEventListener("click", () => {
-				cardFront.classList.toggle("active");
-				cardBack.classList.toggle("active");
-			});
+			
 
 			let unix_timestamp_sunset = data.sys.sunrise;
 			let unix_timestamp_sunrise = data.sys.sunset;
@@ -150,4 +143,13 @@ btnGetSearch.addEventListener("click", () => {
 	cityInput = (window.prompt("sometext",""));
 	console.log("city : " + city);
 	getLocation();
+});
+
+btnMore.addEventListener("click", () => {
+	cardFront.classList.toggle("active");
+	cardBack.classList.toggle("active");
+});
+btnLess.addEventListener("click", () => {
+	cardFront.classList.toggle("active");
+	cardBack.classList.toggle("active");
 });
