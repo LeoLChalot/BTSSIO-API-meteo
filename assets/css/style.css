@@ -10,20 +10,58 @@
 body{
   width: 100vw;
   height: 100vh;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  /* background: url('../img/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat; */
+  align-items: center; */
   background: rgb(117, 117, 117);
+}
+
+main{
+  width: 100%;
+  height: 100%;
+}
+
+#card{
+  width: 300px;
+  height: 445px;
+  position: relative;
+  transition: .5s all;
+}
+
+.card-front,
+.card-back{
+  width: 300px;
+  height: 445px;
+  position: absolute;
+  transition: all 1s ease;
+}
+
+.card-back{
+  transform: rotateY(90deg);
+  backface-visibility: hidden;
+  display: none;
+}
+
+.card-front{
+  transform: rotateY(0deg);
+  backface-visibility: visible;
+}
+
+.card-front.active{
+  transform: rotateY(90deg);
+  backface-visibility: hidden;
+  display: none;
+}
+
+.card-back.active{
+  transform: rotateY(0deg);
+  backface-visibility: visible;
 }
 
 #weather-infos{
   width: 300px;
   padding: 1em;
   border-radius: 20px;
-  /* backdrop-filter: blur(10px); */
   background: white;
   display: flex;
   flex-direction: column;
@@ -56,7 +94,15 @@ body{
   justify-content: center;
   align-items: center;
 }
-#weather-body button{
+
+#weather-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
   padding: .5em 1em;
   border-radius: 10px;
   border: none;
@@ -73,4 +119,13 @@ body{
 }
 #weather-footer span{
   font-weight: 500;
+}
+
+#weather-body-back{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
 }
