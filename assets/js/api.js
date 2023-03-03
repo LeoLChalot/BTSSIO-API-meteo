@@ -69,19 +69,28 @@ function callApi(urlAPI) {
 			// ? weatherBody -> WeatherIco
 			if(200 > weatherId > 299){
 				weatherIco.src = "assets/img/light.png";
+				cardFront.background = "url(assets/img/jpg/light.jpg)"
 			}else if(300 > weatherId > 499){
 				weatherIco.src = "assets/img/rain+light.png";
+				cardFront.style.background = "url(assets/img/jpg/rain+light.jpg)"
 			}else if(500 > weatherId > 599){
 				weatherIco.src = "assets/img/rain.png";
+				cardFront.style.background = "url(assets/img/jpg/rain.jpg)"
 			}else if(600 > weatherId > 699){
 				weatherIco.src = "assets/img/snow.png";
+				cardFront.style.background = "url(assets/img/jpg/snow.jpg)"
 			}else if(700 > weatherId > 799){
 				weatherIco.src = "assets/img/cloudy.png";
+				cardFront.style.background = "url(assets/img/jpg/cloudy.jpg)"
 			}else if(weatherId == 800){
 				weatherIco.src = "assets/img/sunny.png";
+				cardFront.style.background = "url(assets/img/jpg/sunny.jpg)"
 			}else{
 				weatherIco.src = "assets/img/clouds.png";
+				cardFront.style.background = "url(assets/img/jpg/clouds.jpg)"
 			}
+			cardFront.style.backgroundSize = "cover";
+			cardFooter.style.color = "white";
 
 			// ? weatherFooter -> AllStates
 			skyState.textContent = `${data.weather[0].description}`;
@@ -140,7 +149,8 @@ btnGetPos.addEventListener("click", () => {
 });
 
 btnGetSearch.addEventListener("click", () => {
-	cityInput = (window.prompt("sometext",""));
+	cityInput = (window.prompt("Ville",""));
+	cityInput = cityInput.trim();
 	console.log("city : " + city);
 	getLocation();
 });
