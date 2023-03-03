@@ -85,11 +85,13 @@ function callApi(urlAPI) {
 			}else if(weatherId == 800){
 				weatherIco.src = "assets/img/sunny.png";
 				cardFront.style.background = "url(assets/img/jpg/sunny.jpg)"
+				cardBack.style.background = "url(assets/img/jpg/sunny.jpg)"
 			}else{
 				weatherIco.src = "assets/img/clouds.png";
 				cardFront.style.background = "url(assets/img/jpg/clouds.jpg)"
 			}
 			cardFront.style.backgroundSize = "cover";
+			cardBack.style.backgroundSize = "cover";
 			cardFooter.style.color = "white";
 
 			// ? weatherFooter -> AllStates
@@ -109,18 +111,18 @@ function callApi(urlAPI) {
 
 			longitude.textContent = `${data.coord.lon}`;
 			latitude.textContent = `${data.coord.lat}`;
-			longitude.style['color'] = "green";
-			latitude.style['color'] = "green";
+			longitude.style['color'] = "#005c12";
+			latitude.style['color'] = "#005c12";
 			tempMin.textContent = `${Math.floor(data.main.temp_min)} °C`;
-			tempMin.style['color'] = "blue";
+			tempMin.style['color'] = "#2271b3";
 			tempMax.textContent = `${Math.floor(data.main.temp_max)} °C`;
-			tempMax.style['color'] = "red";
+			tempMax.style['color'] = "#b32d2e";
 			sunrise.textContent = `${sunsetConv}`;
 			sunset.textContent = `${sunriseConv}`;
-			sunrise.style['color'] = "orange";
-			sunset.style['color'] = "orange";
+			sunrise.style['color'] = "#bd8600";
+			sunset.style['color'] = "#bd8600";
 			wind.textContent = `${data.wind.speed} m/s`;
-			wind.style['color'] = "deepskyblue";
+			wind.style['color'] = "#043959";
 
 		})
 		.catch((error) => console.log(error));
