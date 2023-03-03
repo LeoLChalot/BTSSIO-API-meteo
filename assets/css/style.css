@@ -1,160 +1,160 @@
 *,
 ::before,
-::after{
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
+::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
 }
 
-body{
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(255, 255, 255);
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(255, 255, 255);
 }
 
-main{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+main {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-#card{
-  width: 300px;
-  height: 445px;
-  position: relative;
-
+#card {
+	width: 300px;
+	height: 445px;
+	position: relative;
 }
 
-#card:hover{
-  box-shadow: none;
+#card:hover {
+	box-shadow: none;
 }
 
 .card-front,
-.card-back{
-  width: 300px;
-  height: 445px;
-  position: absolute;
-  transition: all 1s ease;
+.card-back {
+	width: 300px;
+	height: 445px;
+	position: absolute;
+	transition: all 1s ease;
 }
 
-.card-back{
-  transform: rotateY(-180deg);
-  backface-visibility: hidden;
+.card-back {
+	transform: rotateY(-180deg);
+	backface-visibility: hidden;
 }
-.card-front.active{
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
-
-.card-front{
-  transform: rotateY(0deg);
-}
-.card-back.active{
-  transform: rotateY(0deg);
+.card-front.active {
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
 }
 
-#weather-infos{
-  width: 300px;
-  padding: 1em;
-  border-radius: 20px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-  box-shadow: 4px 5px 6px 0px rgb(0, 0, 0);
+.card-front {
+	transform: rotateY(0deg);
+}
+.card-back.active {
+	transform: rotateY(0deg);
 }
 
-#weather-infos h1{
-  font-size: 23px;
+#weather-infos {
+	width: 300px;
+	padding: 1em;
+	border-radius: 20px;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1em;
+	box-shadow: 4px 5px 6px 0px rgb(0, 0, 0);
+}
+
+#weather-infos h1 {
+	font-size: 23px;
 }
 
 #weather-header,
 #weather-body,
-#weather-footer{
-  width: 100%;
+#weather-footer {
+	width: 100%;
 }
 
-#weather-header{
-  align-self: flex-start;
-  border-bottom: 2px solid blue;
+#weather-header {
+	align-self: flex-start;
+	border-bottom: 2px solid blue;
 }
 
-#weather-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#weather-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-#weather-body img{
-  width: 80%
-}
-
-#weather-footer{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#weather-body img {
+	width: 80%;
 }
 
-button{
-  padding: .5em 1em;
-  border-radius: 10px;
-  border: none;
-  background-color: rgb(140, 140, 255);
-  color: white;
-  cursor: pointer;
-}
-#weather-footer p{
-  line-height: 1.5em;
-  display: block;
-  width: 100%;
-  text-align: left;
-  font-weight: bold;
-}
-#weather-footer span{
-  font-weight: 500;
+#weather-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
-#weather-body-back{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
+button {
+	padding: 0.5em 1em;
+	border-radius: 10px;
+	border: none;
+	background-color: rgb(140, 140, 255);
+	color: white;
+	cursor: pointer;
+}
+#weather-footer p {
+	line-height: 1.5em;
+	display: block;
+	width: 100%;
+	text-align: left;
+	font-weight: bold;
+}
+#weather-footer span {
+	font-weight: 500;
+}
+
+#weather-body-back {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-start;
 }
 
 #more,
-#less{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-weight: bold;
-  font-size: 1em;
-  transition: .5s all;
+#less {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	font-weight: bold;
+	font-size: 1em;
+	transition: 0.5s all;
 }
 
-table{
-  width: 100%;
-  background: rgba(255, 255, 255, .5);
-  border-radius: 10px;
+table {
+	width: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
 }
 
-th, td {
-  padding: .6em;
+th,
+td {
+	padding: 0.6em;
 }
 
-table tr{
-  border-bottom: 1px solid #ddd;
+table tr {
+	border-bottom: 1px solid #ddd;
 }
 
-.tdName{
-  font-weight: bold;
+.tdName {
+	font-weight: bold;
 }
