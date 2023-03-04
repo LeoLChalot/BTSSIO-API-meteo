@@ -60,26 +60,26 @@ function callApi(urlAPI) {
 			console.log(data.weather[0].id);
 			let weatherId = data.weather[0].id;
 			// ? weatherBody -> WeatherIco
-			if (200 > weatherId > 299) {
+			if (200 >= weatherId && weatherId < 299) {
 				weatherIco.src = "assets/img/light.png";
 				cardFront.background = "url(assets/img/jpg/light.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
-			} else if (300 > weatherId > 499) {
+				cardBack.style.background = "url(assets/img/jpg/light.jpg)";
+			} else if (weatherId >= 300 && weatherId < 499) {
 				weatherIco.src = "assets/img/rain+light.png";
 				cardFront.style.background = "url(assets/img/jpg/rain+light.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
-			} else if (500 > weatherId > 599) {
+				cardBack.style.background = "url(assets/img/jpg/rain+light.jpg)";
+			} else if (weatherId >= 500  && weatherId < 599) {
 				weatherIco.src = "assets/img/rain.png";
 				cardFront.style.background = "url(assets/img/jpg/rain.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
-			} else if (600 > weatherId > 699) {
+				cardBack.style.background = "url(assets/img/jpg/rain.jpg)";
+			} else if (weatherId >= 600 && weatherId < 699) {
 				weatherIco.src = "assets/img/snow.png";
 				cardFront.style.background = "url(assets/img/jpg/snow.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
-			} else if (700 > weatherId > 799) {
+				cardBack.style.background = "url(assets/img/jpg/snow.jpg)";
+			} else if (weatherId >= 700 && weatherId < 799) {
 				weatherIco.src = "assets/img/cloudy.png";
 				cardFront.style.background = "url(assets/img/jpg/cloudy.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
+				cardBack.style.background = "url(assets/img/jpg/cloudy.jpg)";
 			} else if (weatherId == 800) {
 				weatherIco.src = "assets/img/sunny.png";
 				cardFront.style.background = "url(assets/img/jpg/sunny.jpg)";
@@ -87,7 +87,7 @@ function callApi(urlAPI) {
 			} else {
 				weatherIco.src = "assets/img/clouds.png";
 				cardFront.style.background = "url(assets/img/jpg/clouds.jpg)";
-				cardBack.background = "url(assets/img/jpg/light.jpg)";
+				cardBack.style.background = "url(assets/img/jpg/clouds.jpg)";
 			}
 			cardFront.style.backgroundSize = "cover";
 			cardBack.style.backgroundSize = "cover";
@@ -123,6 +123,7 @@ function callApi(urlAPI) {
 }
 function convertUNIXTimestamp(time) {
 	let date = new Date(time * 1000);
+	console.log(date);
 	// Hours part from the timestamp
 	let hours = date.getHours();
 	// Minutes part from the timestamp
